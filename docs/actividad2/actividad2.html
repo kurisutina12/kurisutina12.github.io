@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Productos</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Inventario</h1>
+
+    <div id="miAlerta" class="alerta">
+        <span id="mensajeAlerta"></span>
+    </div>
+    <div id="miAlerta2" class="alerta2">
+        <span id="mensajeAlerta2"></span>
+    </div>
+    <div>
+       <form id="formulario">
+            <label for="nombre">Nombre: </label>
+            <input type="text" id="nombre" name="nombre"> <br><br>
+
+            <label for="cantidad">Cantidad: </label>
+            <input type="number" id="cantidad" name="cantidad"> <br><br>
+
+            <label for="fecha">Fecha: </label>
+            <input type="date" id="fecha" name="fecha"> <br><br>
+
+            <label for="identificador">identificador: </label>
+            <input type="number" id="identificador" name="identificador"> <br><br>
+
+            <label for="costo">Costo: </label>
+            <input type="number" id="costo" name="costo"> <br><br>
+       </form>
+
+       <form>
+            <button type="button" id="btnAgregar">Agregar</button>
+            <div id="agregar">
+ 
+            </div>
+        </form>
+
+    </div>
+
+    <h2>Lista</h2>
+    <div id="lista"></div>
+
+    <script src="index.js"></script>
+    
+</body>
+</html>
