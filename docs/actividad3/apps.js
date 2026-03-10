@@ -94,5 +94,3 @@ window.ocultar = async function(postId) {
     const contenedor = document.getElementById(`comentarios${postId}`);
     contenedor.innerHTML = "";
 }
-
-window.mostrar=mostrar;
