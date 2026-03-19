@@ -52,6 +52,8 @@ menu.addEventListener("change", () => {
 
                     <button onclick="window.mostrar(${info.id})" class="btn btn-primary">Mostrar</button>
                     <button onclick="window.ocultar(${info.id})" class="btn btn-primary">Ocultar</button>
+                    <button onclick="window.post(${info.id})" class="btn btn-primary">Agregar comentario</button>
+                    <div id="posts"></div>
                     <div id="comentarios${info.id}"></div>`;
 
             });
@@ -94,3 +96,49 @@ window.ocultar = async function(postId) {
     const contenedor = document.getElementById(`comentarios${postId}`);
     contenedor.innerHTML = "";
 }
+
+window.post = async function (postId) {
+    const contenedor = document.getElementById(`posts`);
+
+    contenedor.innerHTML = `
+
+        <label for="name">name:</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="body">body:</label>
+        <input type="body" id="body" name="body">
+
+        <label for="email">email:</label>
+        <input type="text" id="email" name="nombre" required>
+
+        <button type="button" onclick="window.post2(${postId})" class="btn btn-primary">Agregar</button>`
+
+  };
+
+  window.post2 = async function (postId) {
+    const contenedor = document.getElementById(`comentarios${postId}`);
+    let texto4 = "";
+
+    fetch(`https://jsonplaceholder.typicode.com/comments?postId=${postId}`, {
+         method: 'POST',
+    body: JSON.stringify({
+    name: document.getElementById("name").value,
+    body: document.getElementById("body").value,
+    email: document.getElementById("email").value,
+    postId: postId,
+  }),
+  headers: {
+    'Content-type': 'application/json; charset=UTF-8',
+  },
+})
+    .then((response) => response.json())
+    .then(post => {
+            texto4 += `<div class="card">
+                        <div class="card-body">
+                            <h5>${post.name}</h5>
+                            <p>${post.body}</p>
+                        </div>
+                </div>`;
+                contenedor.innerHTML += texto4;
+    })
+  };
